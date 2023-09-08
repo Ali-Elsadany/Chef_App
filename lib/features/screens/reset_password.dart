@@ -37,7 +37,7 @@ class ResetPasswordScreen extends StatelessWidget {
               },
               builder: (context,state) {
                 return Form(
-                  key: BlocProvider.of<ForgetPasswordCubit>(context).sendCodeKey,
+                  key: BlocProvider.of<ForgetPasswordCubit>(context).resetPasswordKey,
                   child: Column(
                     children: [
                       // image
@@ -47,6 +47,9 @@ class ResetPasswordScreen extends StatelessWidget {
                       ),
                       //text
                       Text(AppStrings.createYourNewPassword.tr(context)),
+                      SizedBox(
+                        height: 26,
+                      ),
                       SizedBox(
                         height: 26,
                       ),
@@ -66,6 +69,9 @@ class ResetPasswordScreen extends StatelessWidget {
                           return null;
                         },
                       ),
+                      SizedBox(
+                        height: 26,
+                      ),
                       //textfield = confirm password
                       CustomTextFormField(
                         controller: BlocProvider.of<ForgetPasswordCubit>(context).confirmPasswordController,
@@ -79,14 +85,23 @@ class ResetPasswordScreen extends StatelessWidget {
                           if(data!.length<6||data.isEmpty){
                             return AppStrings.pleaseEnterValidPassword.tr(context);
                           }
+                          if(data != BlocProvider.of<ForgetPasswordCubit>(context).newPasswordController.text){
+                            return AppStrings.pleaseEnterValidPassword.tr(context);
+                          }
                           return null;
                         },
                       ),
+                      SizedBox(
+                        height: 26,
+                      ),
                       //textfield = code
                       CustomTextFormField(
-                        controller: BlocProvider.of<ForgetPasswordCubit>(context).emailController,
+                        controller: BlocProvider.of<ForgetPasswordCubit>(context).codeController,
                         hint: AppStrings.code.tr(context),
                         validate: (data){
+                          if(num.tryParse(data!)== null){
+                            return AppStrings.pleaseEnterValidCode.tr(context);
+                          }
                           if(data!.isEmpty
                               ){
                             return AppStrings.pleaseEnterValidCode.tr(context);
@@ -103,12 +118,12 @@ class ResetPasswordScreen extends StatelessWidget {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: (){
-                            if(BlocProvider.of<ForgetPasswordCubit>(context).sendCodeKey.currentState!.validate()){
-                              BlocProvider.of<ForgetPasswordCubit>(context).sendCode();
+                            if(BlocProvider.of<ForgetPasswordCubit>(context).resetPasswordKey.currentState!.validate()){
+                              //BlocProvider.of<ForgetPasswordCubit>(context).sendCode();
                             }
 
                           },
-                          child: Text(AppStrings.sendResetLink.tr(context)),),
+                          child: Text(AppStrings.createYourNewPassword.tr(context)),),
                       ),
                     ],
                   )

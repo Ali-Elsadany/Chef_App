@@ -22,6 +22,8 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
 
     );
   }
+  GlobalKey<FormState> resetPasswordKey = GlobalKey<FormState>();
+
   //new password
   TextEditingController newPasswordController = TextEditingController();
   bool isNewPasswordShowing = true;
@@ -31,7 +33,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
     suffixIconNewPassword=isNewPasswordShowing?Icons.visibility:Icons.visibility_off;
     emit(ChangeNewPasswordSuffixIcon());
   }
-  //new password
+  //confirm password
   TextEditingController confirmPasswordController = TextEditingController();
   bool isConfirmPasswordShowing = true;
   IconData suffixIconConfirmPassword = Icons.visibility;
@@ -40,4 +42,6 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
     suffixIconNewPassword=isConfirmPasswordShowing?Icons.visibility:Icons.visibility_off;
     emit(ChangeConfirmPasswordSuffixIcon());
   }
+  //code
+TextEditingController codeController = TextEditingController();
 }
