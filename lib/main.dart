@@ -1,5 +1,6 @@
 import 'package:chef_app/core/bloc/cubit/forget_password_cubit/forget_password_cubit.dart';
 import 'package:chef_app/core/bloc/cubit/global_cubit/global_cubit.dart';
+import 'package:chef_app/core/bloc/cubit/home_cubit/home_cubit.dart';
 import 'package:chef_app/core/database/cache/cache_helper.dart';
 import 'package:chef_app/core/locale/app_locale.dart';
 import 'package:chef_app/core/theme/app_theme.dart';
@@ -11,6 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/bloc/cubit/global_cubit/global_state.dart';
 import 'core/bloc/cubit/login_cubit/login_cubit.dart';
+import 'core/bloc/cubit/menu_cubit/menu_cubit.dart';
 import 'core/services/service_locator.dart';
 
 void main() async{
@@ -28,6 +30,12 @@ void main() async{
         ),
         BlocProvider(
           create: (context) => sl<ForgetPasswordCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => sl<HomeCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => sl<MenuCubit>(),
         ),
   ],
   child: const MyApp(),

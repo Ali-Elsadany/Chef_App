@@ -1,9 +1,12 @@
 
+import 'package:chef_app/core/locale/app_locale.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../utils/app_colors.dart';
+import '../utils/app_strings.dart';
 
 
 void navigate({
@@ -17,13 +20,24 @@ void navigate({
       arguments: arg
   );
 }
+void navigateReplacement({
+  required BuildContext context,
+  required String route,
+  dynamic arg
+}) {
+  Navigator.pushReplacementNamed(
+      context,
+      route,
+      arguments: arg
+  );
+}
 
 void showToast({
   required String message,
   required ToastStates state,
 }) {
   Fluttertoast.showToast(
-      msg: "This is Center Short Toast",
+      msg: AppStrings.checkMail,
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.CENTER,
       timeInSecForIosWeb: 1,
@@ -43,6 +57,15 @@ Color getState(ToastStates state){
       return AppColors.green;
       case ToastStates.warining:
       return AppColors.orange;
+  }
+}
+
+Future<XFile?> pickImage(ImageSource source)async{
+  XFile? image = await ImagePicker().pickImage(source: source);
+  if(image!=null){
+    return image;
+  }else{
+    return null;
   }
 }
 

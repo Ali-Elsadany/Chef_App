@@ -20,6 +20,9 @@ class SendCodeScreen extends StatelessWidget {
     return Scaffold(
       //appBar
       appBar: AppBar(
+        leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
+          navigateReplacement(context: context, route: Routes.login);
+        }),
         title: Text(AppStrings.forgetPassword.tr(context)),
       ),
       body: Padding(
@@ -31,7 +34,7 @@ class SendCodeScreen extends StatelessWidget {
                 showToast(
                     message: state.message,
                     state: ToastStates.success);
-                navigate(context: context, route: Routes.restPassword);
+                navigateReplacement(context: context, route: Routes.restPassword);
               }
             },
             builder: (context,state) {

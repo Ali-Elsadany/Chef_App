@@ -1,3 +1,4 @@
+import 'package:chef_app/features/home/home_screen.dart';
 import 'package:chef_app/features/menu/add_meal_screen.dart';
 import 'package:chef_app/features/menu/menu_home.dart';
 import 'package:chef_app/features/profile/change_password.dart';
@@ -35,13 +36,15 @@ class Routes{
   static const String setting='/setting';
 
   static const String changePassword='/changePassword';
+
+  static const String home='/home';
 }
 
 class AppRoutes {
   static Route? generateRoute(RouteSettings routeSettings){
     switch (routeSettings.name){
       case Routes.intitlRoute:
-    return MaterialPageRoute(builder: (_) => const LoginScreen());
+    return MaterialPageRoute(builder: (_) => const SplashScreen());
 
     case Routes.changeLan:
     return MaterialPageRoute(builder: (_) => const ChangeLangScreen());
@@ -72,6 +75,9 @@ class AppRoutes {
 
     case Routes.changePassword:
     return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
+
+    case Routes.home:
+    return MaterialPageRoute(builder: (_) => const HomeScreen());
 
       default : return MaterialPageRoute(builder: (_) => const Scaffold(body: Center(child: Text('Not Found'),),));
     }

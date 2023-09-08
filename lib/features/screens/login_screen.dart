@@ -47,6 +47,7 @@ class LoginScreen extends StatelessWidget {
                       showToast(
                           message: AppStrings.loginSucessfully.tr(context),
                           state: ToastStates.success);
+                      navigateReplacement(context: context, route: Routes.home);
                     }
                     if(state is LoginErrorState){
                       showToast(
@@ -95,7 +96,7 @@ class LoginScreen extends StatelessWidget {
                             children: [
                               TextButton(
                                 onPressed: () {
-                                  navigate(context: context, route: Routes.sendCode);
+                                  navigateReplacement(context: context, route: Routes.sendCode);
                                 },
                                 child: Text(AppStrings.forgetPassword.tr(context),
                                   style: TextStyle(

@@ -4,6 +4,7 @@ import 'package:chef_app/core/database/api/end_points.dart';
 import 'package:chef_app/core/database/cache/cache_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
 import '../../../services/service_locator.dart';
 import 'login_state.dart';
@@ -35,6 +36,9 @@ void login()async{
            (l) => emit(LoginErrorState(l)),
            (r) async{
              loginModel=r;
+             Map<String, dynamic> decodedToken = JwtDecoder.decode(r.token);
+             await sl<CacheHelper>().saveData(key: ApiKey.id, value: decodedToken['id']);
+             //
             await sl<CacheHelper>().saveData(
                  key: ApiKey.token,
                  value: r.token

@@ -1,4 +1,5 @@
 import 'package:chef_app/core/bloc/cubit/global_cubit/global_cubit.dart';
+import 'package:chef_app/core/commons/commons.dart';
 import 'package:chef_app/core/locale/app_locale.dart';
 import 'package:chef_app/core/utils/app_assets.dart';
 import 'package:chef_app/core/utils/app_colors.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/bloc/cubit/global_cubit/global_state.dart';
+import '../../core/utils/app_routes.dart';
 import '../../core/utils/app_text_styles.dart';
 
 class ChangeLangScreen extends StatelessWidget {
@@ -59,6 +61,7 @@ class ChangeLangScreen extends StatelessWidget {
                             child: ElevatedButton(
                                 onPressed: (){
                                   BlocProvider.of<GlobalCubit>(context).changeLang('en');
+                                  navigate(context: context, route: Routes.login);
                                 },
                                 style: Theme.of(context).elevatedButtonTheme.style!.copyWith(
                                   backgroundColor: MaterialStateProperty.all(AppColors.black),
@@ -75,7 +78,7 @@ class ChangeLangScreen extends StatelessWidget {
                             child: ElevatedButton(
                                 onPressed: (){
                                   BlocProvider.of<GlobalCubit>(context).changeLang('ar');
-
+                                  navigate(context: context, route: Routes.login);
                                 },
                                 style: Theme.of(context).elevatedButtonTheme.style!.copyWith(
                                   backgroundColor: MaterialStateProperty.all(AppColors.black),

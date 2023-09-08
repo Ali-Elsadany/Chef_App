@@ -44,4 +44,22 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
   }
   //code
 TextEditingController codeController = TextEditingController();
-}
+
+  //change password
+  void resetPassword()async{
+    emit(ResetPasswordLoading());
+    final res = await authRepository.resetPassword(
+        email: emailController.text,
+        password: newPasswordController.text,
+        confirmPassword: confirmPasswordController.text,
+        code: codeController.text);
+
+    res.fold(
+
+          (l) => emit(ResetPasswordError(l)),
+          (r) => emit(ResetPasswordSucess(r)),
+
+    );
+  }
+  }
+

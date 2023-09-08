@@ -21,6 +21,9 @@ class ResetPasswordScreen extends StatelessWidget {
     return Scaffold(
       //appBar
       appBar: AppBar(
+        leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
+          navigateReplacement(context: context, route: Routes.sendCode);
+        }),
         title: Text(AppStrings.createYourNewPassword.tr(context)),
       ),
       body: Padding(
@@ -28,11 +31,11 @@ class ResetPasswordScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: BlocConsumer<ForgetPasswordCubit,ForgetPasswordState>(
               listener: (context,state){
-                if(state is SendCodeSucess){
+                if(state is ResetPasswordSucess){
                   showToast(
                       message: state.message,
                       state: ToastStates.success);
-                  navigate(context: context, route: Routes.restPassword);
+                  navigate(context: context, route: Routes.login);
                 }
               },
               builder: (context,state) {
@@ -113,13 +116,13 @@ class ResetPasswordScreen extends StatelessWidget {
                         height: 26,
                       ),
                       //button
-                      state is SendCodeLoading?CustomLoadingIndicator():
+                      state is ResetPasswordLoading?CustomLoadingIndicator():
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: (){
                             if(BlocProvider.of<ForgetPasswordCubit>(context).resetPasswordKey.currentState!.validate()){
-                              //BlocProvider.of<ForgetPasswordCubit>(context).sendCode();
+                              BlocProvider.of<ForgetPasswordCubit>(context).resetPassword();
                             }
 
                           },

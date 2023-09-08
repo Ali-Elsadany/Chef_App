@@ -46,6 +46,11 @@ dependencies:
   dartz: ^0.10.1
   flutter_spinkit: ^5.2.0
   fluttertoast: ^8.2.2
+  google_nav_bar: ^5.0.6
+  cached_network_image: ^3.2.3
+  shimmer: ^3.0.0
+  image_picker: ^1.0.4
+  jwt_decoder: ^2.0.1
 
 dev_dependencies:
   flutter_test:

@@ -56,6 +56,10 @@ class AppStrings {
   static const String pleaseEnterValidMealDesc = 'pleaseEnterValidMealDesc';
   static const String pleaseEnterValidMealPrice = 'pleaseEnterValidMealPrice';
   static const String pleaseEnterValidMealPhoto = 'pleaseEnterValidMealPhoto';
+  static const String menu = 'menu';
+  static const String profile = 'profile';
+  static const String deleteDish = 'deleteDish';
+  static const String category = 'category';
 
   //!setting
   static const String editProfile = 'editProfile';
