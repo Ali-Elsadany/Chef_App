@@ -21,5 +21,13 @@ class GlobalCubit extends Cubit<GlobalState>{
     langCode = cachedLang;
     emit(ChangeLangSucess());
   }
+  bool switchOn = false;
+  void switchLang(value) {
+    switchOn = !switchOn;
+    sl<CacheHelper>().saveData(key: 'lang', value: switchOn ? 'ar' : 'en');
+    langCode = sl<CacheHelper>().getDataString(key: 'lang')!;
+    emit(ChangeLangSucess());
+  }
 }
+
 

@@ -64,5 +64,18 @@
     "menu": "القائمة",
     "profile": "الملف الشخصي",
     "deleteDish": "حذف الوجبة ؟",
-    "category": "فئة"
+    "category": "فئة",
+    "noMeals": "لا يوجد وجبات حاليا",
+    "language": "English",
+    "brandName": "اسم العلامة التجارية",
+    "location": "العنوان",
+    "minCharge": "الحد الأدنى للطلب",
+    "update": "تعديل",
+    "pleaseEnterValidPhoneAtLeastTenChar": "من فضلك ادخل الرقم على الاقل عشرة ارقام",
+    "pleaseEnterValidBrandName": "من فضلك ادخل اسم العلامة التجارية صحيح",
+    "pleaseEnterValidMinCharge": "من فضلك ادخل الحد الأدنى للطلب صحيح",
+    "pleaseEnterValidLocation": "من فضلك ادخل العنوان",
+    "pleaseEnterValidChargeAtLeastTwentyChar": "من فضلك ادخل الحد الأدنى للطلب على الاقل عشرين رقم"
+
+
 }

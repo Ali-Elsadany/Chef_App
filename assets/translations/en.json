@@ -64,7 +64,20 @@
     "menu": "Menu",
     "profile": "Profile",
     "deleteDish": "Want To Delete This Dish ?",
-    "category": "Category"
+    "category": "Category",
+    "noMeals": "No Meals",
+    "language": "العربية",
+    "brandName": "Brand Name",
+    "location": "Location",
+    "minCharge": "Minimum Charge",
+    "update": "Update",
+    "pleaseEnterValidPhoneAtLeastTenChar": "please Enter Valid Phone Number At Least Ten Characters",
+    "pleaseEnterValidBrandName": "Please Enter Valid Brand Name Correct",
+    "pleaseEnterValidMinCharge": "Please Enter Valid Minimum Charge Correct",
+    "pleaseEnterValidLocation": "Please Enter Valid Location",
+    "pleaseEnterValidChargeAtLeastTwentyChar": "Please Enter Valid Charge At Least Twenty Characters"
+
+
 
 
 }

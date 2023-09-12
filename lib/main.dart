@@ -13,6 +13,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/bloc/cubit/global_cubit/global_state.dart';
 import 'core/bloc/cubit/login_cubit/login_cubit.dart';
 import 'core/bloc/cubit/menu_cubit/menu_cubit.dart';
+import 'core/bloc/cubit/profile_cubit/profile_cubit.dart';
+import 'core/bloc/cubit/update_password_cubit/update_password_cubit.dart';
+import 'core/bloc/cubit/update_profile_cubit/update_profile_cubit.dart';
 import 'core/services/service_locator.dart';
 
 void main() async{
@@ -35,7 +38,16 @@ void main() async{
           create: (context) => sl<HomeCubit>(),
         ),
         BlocProvider(
-          create: (context) => sl<MenuCubit>(),
+          create: (context) => sl<MenuCubit>()..getAllMeals(),
+        ),
+        BlocProvider(
+          create: (context) => sl<ProfileCubit>()..getChefData(),
+        ),
+        BlocProvider(
+          create: (context) => sl<UpdateProfileCubit>(),
+        ),
+        BlocProvider(
+          create: (context) => sl<UpdatePasswordCubit>(),
         ),
   ],
   child: const MyApp(),

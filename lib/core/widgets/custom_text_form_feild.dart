@@ -1,6 +1,7 @@
 
 import 'package:chef_app/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CustomTextFormField extends StatelessWidget {
   CustomTextFormField({
@@ -11,9 +12,10 @@ class CustomTextFormField extends StatelessWidget {
     this.isPassword = false,
     this.label,
     this.icon,
-    this.suffixIconOnPressed
+    this.suffixIconOnPressed,
+    this.inputFormatters
   });
-
+  List<TextInputFormatter>? inputFormatters;
   TextEditingController controller;
   String? hint;
   String? label;
@@ -24,6 +26,7 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      inputFormatters: inputFormatters,
       controller: controller,
       cursorColor: AppColors.primary,
       validator: validate,

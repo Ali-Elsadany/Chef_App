@@ -3,6 +3,7 @@ import 'package:chef_app/core/bloc/cubit/menu_cubit/menu_state.dart';
 import 'package:chef_app/core/locale/app_locale.dart';
 import 'package:chef_app/core/utils/app_assets.dart';
 import 'package:chef_app/core/utils/app_colors.dart';
+import 'package:chef_app/core/widgets/custom_loading_indicator.dart';
 import 'package:chef_app/core/widgets/custom_text_form_feild.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,8 @@ import 'package:image_picker/image_picker.dart';
 import '../../core/bloc/cubit/login_cubit/login_cubit.dart';
 import '../../core/commons/commons.dart';
 import '../../core/utils/app_strings.dart';
+import '../../core/widgets/custom_file_image.dart';
+import '../../core/widgets/custom_image.dart';
 
 class AddMealScreen extends StatelessWidget {
   const AddMealScreen({super.key});
@@ -29,8 +32,14 @@ class AddMealScreen extends StatelessWidget {
             child: Center(
               child: BlocConsumer<MenuCubit,MenuState>(
                 listener: (context,state) {
-
-    },
+                  if(state is AddDishSucessState){
+                    showToast(
+                      message: AppStrings.mealAddedSucessfully,
+                      state: ToastStates.success);
+                    Navigator.pop(context);
+                    BlocProvider.of<MenuCubit>(context).getAllMeals();
+                    }
+                  },
                 builder: (context, state) {
                   final menuCubit = BlocProvider.of<MenuCubit>(context);
                  return Form(
@@ -41,12 +50,14 @@ class AddMealScreen extends StatelessWidget {
                       Stack(
                         children: [
                           //image
-                          Image.asset(AppAssets.avatar),
+                          CustomFileImage(
+                              image: menuCubit.image,
+                              ),
                           //add icon
                           Positioned.directional(
                             textDirection: Directionality.of(context),
-                            bottom: -8,
-                            end: -8,
+                            bottom: 0,
+                            end: 0,
                             child: IconButton(
                                 onPressed: (){
                                   showDialog(
@@ -70,7 +81,8 @@ class AddMealScreen extends StatelessWidget {
                                                 ),
                                                 onTap: (){
                                                   Navigator.pop(context);
-                                                  pickImage(ImageSource.camera);
+                                                  pickImage(ImageSource.camera)
+                                                      .then((value) => menuCubit.takeImage(value));
                                                 },
                                               ),
                                               SizedBox(
@@ -84,7 +96,8 @@ class AddMealScreen extends StatelessWidget {
                                                 ),
                                                 onTap: (){
                                                   Navigator.pop(context);
-                                                  pickImage(ImageSource.gallery);
+                                                  pickImage(ImageSource.gallery)
+                                                      .then((value) => menuCubit.takeImage(value));
 
                                                 },
                                               ),
@@ -95,7 +108,17 @@ class AddMealScreen extends StatelessWidget {
                                       }
                                       );
                                 },
-                                icon: Icon(Icons.add,size: 35,)
+                                icon: Container(
+                                  height: 35,
+                                  width: 35,
+                                  decoration: BoxDecoration(
+                                      color: AppColors.orangeEdit,
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: const Icon(
+                                    Icons.edit,
+                                    color: AppColors.white,
+                                  ),
+                                ),
                             ),
                           )
                         ],
@@ -200,8 +223,13 @@ class AddMealScreen extends StatelessWidget {
                       ),
             SizedBox(
                 width: double.infinity,
-                child: ElevatedButton(
-                    onPressed: (){},
+                child: state is AddDishLoadingState?CustomLoadingIndicator()
+                    : ElevatedButton(
+                    onPressed: (){
+                      if(menuCubit.addToMenuKey.currentState!.validate()){
+                        menuCubit.addDishToMenu();
+                      }
+                    },
                     child: Text(AppStrings.addToMenu.tr(context)
                     ),
                 ),

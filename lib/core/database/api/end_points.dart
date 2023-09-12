@@ -44,4 +44,13 @@ class ApiKey {
   static const String category = 'category';
   static const String mealImages = 'mealImages';
   static const String howToSell = 'howToSell';
+  static const String phone = 'phone';
+  static const String brandName = 'brandName';
+  static const String minCharge = 'minCharge';
+  static const String disc = 'disc';
+  static const String location = 'location';
+  static const String profilePic = 'profilePic';
+  static const String oldPass = 'oldPass';
+  static const String newPass = 'newPass';
+  static const String chef = 'chef';
 }

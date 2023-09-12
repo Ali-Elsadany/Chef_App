@@ -68,13 +68,13 @@ class AppRoutes {
     return MaterialPageRoute(builder: (_) => const ProfileHomeScreen());
 
     case Routes.updateProfile:
-    return MaterialPageRoute(builder: (_) => const UpdateProfileScreen());
+    return MaterialPageRoute(builder: (_) =>  UpdateProfileScreen());
 
     case Routes.setting:
     return MaterialPageRoute(builder: (_) => const SettingScreen());
 
     case Routes.changePassword:
-    return MaterialPageRoute(builder: (_) => const ChangePasswordScreen());
+    return MaterialPageRoute(builder: (_) =>  ChangePasswordScreen());
 
     case Routes.home:
     return MaterialPageRoute(builder: (_) => const HomeScreen());

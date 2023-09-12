@@ -11,4 +11,6 @@ class AppAssets {
   static const String lock = "assets/images/lock.png";
 
   static const String imagesLogo = "assets/images/logo.svg";
+
+  static const String ali = "assets/images/ali.png";
 }

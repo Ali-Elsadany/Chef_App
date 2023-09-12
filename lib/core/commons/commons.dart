@@ -1,5 +1,6 @@
 
 import 'package:chef_app/core/locale/app_locale.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -37,7 +38,7 @@ void showToast({
   required ToastStates state,
 }) {
   Fluttertoast.showToast(
-      msg: AppStrings.checkMail,
+      msg: message,
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.CENTER,
       timeInSecForIosWeb: 1,
@@ -67,6 +68,11 @@ Future<XFile?> pickImage(ImageSource source)async{
   }else{
     return null;
   }
+}
+
+Future uploadImageToAPI(XFile image)async{
+  return   MultipartFile.fromFile(image.path,
+      filename: image.path.split('/').last);
 }
 
 

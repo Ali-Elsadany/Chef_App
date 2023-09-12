@@ -1,3 +1,4 @@
+import 'package:chef_app/auth/data/models/meal_model.dart';
 import 'package:chef_app/core/database/api/api_consumer.dart';
 import 'package:chef_app/core/database/api/end_points.dart';
 import 'package:chef_app/core/database/cache/cache_helper.dart';
@@ -20,7 +21,10 @@ class MenuRepository{
 
   })async {
     try {
-      final response = await sl<ApiConsumer>().post(EndPoint.addMeal, data: {
+      final response = await sl<ApiConsumer>().post(
+          EndPoint.addMeal,
+          isFormData:true,
+          data: {
         ApiKey.name: mealName,
         ApiKey.price: mealPrice,
         ApiKey.description: mealeDesc,
@@ -41,20 +45,19 @@ class MenuRepository{
 
   })async {
     try {
-      final response = await sl<ApiConsumer>().delete(EndPoint.getdeleteMealEndPoint(id), data: {
-
-      });
+      final response = await sl<ApiConsumer>().delete(EndPoint.getdeleteMealEndPoint(id),
+      );
       return Right(response[ApiKey.message]);
     } on ServerException catch (error) {
       return Left(error.errorModel.errorMessage);
     }
   }
-  Future<Either<String,String>> getMeal()async {
+  Future<Either<String,GetAllMealModel>> getMeal()async {
     try {
       final response = await sl<ApiConsumer>().get(
         EndPoint.getAllChefMeals(sl<CacheHelper>().getData(key: ApiKey.id)),
           );
-      return Right(response[ApiKey.message]);
+      return Right(GetAllMealModel.fromJson(response));
     } on ServerException catch (error) {
       return Left(error.errorModel.errorMessage);
     }

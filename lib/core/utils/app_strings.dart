@@ -60,6 +60,7 @@ class AppStrings {
   static const String profile = 'profile';
   static const String deleteDish = 'deleteDish';
   static const String category = 'category';
+  static const String noMeals = 'noMeals';
 
   //!setting
   static const String editProfile = 'editProfile';
@@ -72,4 +73,14 @@ class AppStrings {
   static const String changePassword = 'changePassword';
   static const String ok = 'ok';
   static const String cancel = 'cancel';
+  static const String language = 'language';
+  static const String location = 'location';
+  static const String minCharge = 'minCharge';
+  static const String brandName = 'brandName';
+  static const String update = 'update';
+  static const String pleaseEnterValidPhoneAtLeastTenChar = 'pleaseEnterValidPhoneAtLeastTenChar';
+  static const String pleaseEnterValidBrandName = 'pleaseEnterValidBrandName';
+  static const String pleaseEnterValidMinCharge = 'pleaseEnterValidMinCharge';
+  static const String pleaseEnterValidLocation = 'pleaseEnterValidLocation';
+  static const String pleaseEnterValidChargeAtLeastTwentyChar = 'pleaseEnterValidChargeAtLeastTwentyChar';
 }
